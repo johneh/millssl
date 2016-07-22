@@ -2,6 +2,7 @@ Test libmill with openssl.
 
 You will need to patch libmill/tcp.c to include the following function:
 
+```c
 int tcpdetach(struct mill_tcpsock *s) {
     int fd;
     mill_assert(s->type == MILL_TCPCONN);
@@ -11,7 +12,7 @@ int tcpdetach(struct mill_tcpsock *s) {
     free(c);
     return fd;
 }
-
+```
 Also, make sure to export it in libmill.h.
 
 For the test program, create a self-signed certificate
